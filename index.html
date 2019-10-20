@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lớp điện thoại</title>
+</head>
+<body>
+<script>
+    function Mobie(statusBattery, statusOnOff, drap, input, messengerSend) {
+        this.statusBattery = statusBattery;
+        this.statusOnOff = statusOnOff;
+        this.drap = drap;
+        this.input = input;
+        this.messengerSend = messengerSend;
+
+        this.getStatus = function () {
+            return this.statusOnOff;
+        };
+        this.sturnOn = function () {
+            this.statusOnOff = true;
+        };
+        this.turnOff = function () {
+            this.statusOnOff = false;
+        };
+
+        this.getCharging = function () {
+            return this.statusBattery = 100;
+        };
+
+        this.getDrap = function () {
+            return this.drap;
+        };
+
+        this.getMessenger = function (mobie) {
+            if (this.statusOnOff) {
+                this.statusBattery--;
+                return this.input.push(mobie.drap);
+            }
+        };
+        this.sentMessenger = function (mobie, content) {
+            if (this.statusOnOff) {
+                this.statusBattery--;
+                this.messengerSend.push(content);
+                return mobie.input.push(content);
+            }
+        };
+        this.viewInput = function () {
+            if (this.statusOnOff) {
+                this.statusBattery--;
+                return this.input;
+        }
+        this.viewMessenger = function () {
+            if (this.statusOnOff) {
+                this.statusBattery--;
+                return this.messengerSend;
+            }
+        };
+    }
+</script>
+</body>
+</html>
